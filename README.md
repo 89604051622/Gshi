@@ -15,8 +15,40 @@
 
 Откройте файл `index.html` в браузере.
 
+## Деплой на Vercel
+
+### 1) Быстрый деплой через сайт
+
+1. Откройте [vercel.com/new](https://vercel.com/new).
+2. Импортируйте этот репозиторий из GitHub.
+3. Framework preset: `Other`.
+4. Build Command: оставить пустым.
+5. Output Directory: оставить пустым.
+6. Нажмите **Deploy**.
+
+### 2) Деплой через CLI
+
+```bash
+npx vercel
+```
+
+Для продакшн‑деплоя:
+
+```bash
+npx vercel --prod
+```
+
+Для локальной проверки конфигурации Vercel:
+
+```bash
+npx vercel dev
+```
+
+В проекте добавлен `vercel.json` с базовой конфигурацией заголовков и кэширования статики.
+
 ## Структура
 
 - `index.html` — разметка.
 - `styles.css` — стили интерфейса.
 - `app.js` — логика журнала.
+- `vercel.json` — конфигурация деплоя на Vercel.
