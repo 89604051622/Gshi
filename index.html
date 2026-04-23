@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Журнал посещаемости</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow--left"></div>
+    <div class="bg-glow bg-glow--right"></div>
+
+    <main class="app">
+      <header class="hero">
+        <p class="hero__tag">School Assistant</p>
+        <h1>Журнал посещаемости учеников</h1>
+        <p class="hero__subtitle">
+          Отмечайте посещаемость по урокам и смотрите сводную статистику в одном
+          месте.
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2>1) Добавьте ученика</h2>
+        <form id="student-form" class="inline-form">
+          <input
+            id="student-name"
+            type="text"
+            placeholder="Например: Иван Петров"
+            required
+          />
+          <button type="submit">Добавить</button>
+        </form>
+        <ul id="students-list" class="chips"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>2) Добавьте урок</h2>
+        <form id="lesson-form" class="lesson-form">
+          <label>
+            Дата
+            <input id="lesson-date" type="date" required />
+          </label>
+          <label>
+            Тема
+            <input
+              id="lesson-topic"
+              type="text"
+              placeholder="Например: Алгебра"
+              required
+            />
+          </label>
+          <button type="submit">Создать урок</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <h2>3) Отметьте посещаемость</h2>
+        </div>
+        <div id="journal" class="journal-wrap"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Статистика по ученикам</h2>
+        <div id="stats" class="stats-grid"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
