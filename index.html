@@ -2,68 +2,108 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Журнал посещаемости</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Swiftgram — мобильное веб-приложение</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="bg-glow bg-glow--left"></div>
-    <div class="bg-glow bg-glow--right"></div>
+    <div class="aurora aurora--left"></div>
+    <div class="aurora aurora--right"></div>
 
-    <main class="app">
-      <header class="hero">
-        <p class="hero__tag">School Assistant</p>
-        <h1>Журнал посещаемости учеников</h1>
-        <p class="hero__subtitle">
-          Отмечайте посещаемость по урокам и смотрите сводную статистику в одном
-          месте.
-        </p>
-      </header>
+    <main class="phone-shell">
+      <section class="phone">
+        <header class="statusbar">
+          <span class="statusbar__time" id="time-now">17:49</span>
+          <span class="dynamic-island">
+            <span class="dynamic-dot"></span>
+            <span class="dynamic-pill">⚡ SWIFTGRAM</span>
+          </span>
+          <span class="statusbar__icons">▮▮▮ 📶</span>
+        </header>
 
-      <section class="panel">
-        <h2>1) Добавьте ученика</h2>
-        <form id="student-form" class="inline-form">
-          <input
-            id="student-name"
-            type="text"
-            placeholder="Например: Иван Петров"
-            required
-          />
-          <button type="submit">Добавить</button>
-        </form>
-        <ul id="students-list" class="chips"></ul>
-      </section>
+        <section class="screen is-active" data-screen="home">
+          <header class="screen__head">
+            <h1>Сегодня</h1>
+            <p>Актуально для Махачкалы</p>
+          </header>
+          <div id="prayer-cards" class="prayer-cards"></div>
+        </section>
 
-      <section class="panel">
-        <h2>2) Добавьте урок</h2>
-        <form id="lesson-form" class="lesson-form">
-          <label>
-            Дата
-            <input id="lesson-date" type="date" required />
-          </label>
-          <label>
-            Тема
-            <input
-              id="lesson-topic"
-              type="text"
-              placeholder="Например: Алгебра"
-              required
-            />
-          </label>
-          <button type="submit">Создать урок</button>
-        </form>
-      </section>
+        <section class="screen" data-screen="qibla">
+          <header class="screen__head">
+            <h1>Кибла</h1>
+            <p>Компас в реальном времени</p>
+          </header>
 
-      <section class="panel">
-        <div class="panel__head">
-          <h2>3) Отметьте посещаемость</h2>
-        </div>
-        <div id="journal" class="journal-wrap"></div>
-      </section>
+          <article class="glass-card compass-card">
+            <div class="compass" id="compass">
+              <div class="compass__ring"></div>
+              <div class="compass__cross"></div>
+              <div class="compass__needle" id="needle"></div>
+              <div class="compass__center"></div>
+              <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
+            </div>
+            <h2 id="direction-value">183°</h2>
+            <p id="direction-message">Повернись влево примерно на 177°</p>
+          </article>
 
-      <section class="panel">
-        <h2>Статистика по ученикам</h2>
-        <div id="stats" class="stats-grid"></div>
+          <div class="stats-row">
+            <article class="glass-card mini">
+              <p>Азимут киблы</p>
+              <strong>192°</strong>
+            </article>
+            <article class="glass-card mini">
+              <p>Поворот телефона</p>
+              <strong id="tilt-value">9°</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="tasbih">
+          <header class="screen__head">
+            <h1>Тасбих</h1>
+            <p>Мягкий отклик при каждом нажатии</p>
+          </header>
+          <article class="glass-card tasbih-card">
+            <p>Alhamdulillah</p>
+            <h2 id="tasbih-count">0</h2>
+            <div class="actions">
+              <button id="add-count" class="btn btn--gold">+1</button>
+              <button id="reset-count" class="btn">Сброс</button>
+            </div>
+          </article>
+          <article class="glass-card list-item">
+            <span>📖 Утренний азкар</span><small>Открыть azkar.ru</small>
+          </article>
+          <article class="glass-card list-item">
+            <span>🌙 Вечерний зикр</span><small>Перед Магрибом</small>
+          </article>
+        </section>
+
+        <section class="screen" data-screen="profile">
+          <header class="screen__head">
+            <h1>Профиль</h1>
+            <p>Выбор города Кавказа</p>
+          </header>
+          <article class="glass-card profile-main">
+            <h2>Махачкала</h2>
+            <p>Следующая молитва — Магриб, 18:37</p>
+            <div class="chips">
+              <button class="chip is-active">Махачкала</button>
+              <button class="chip">Грозный</button>
+              <button class="chip">Нальчик</button>
+              <button class="chip">Назрань</button>
+              <button class="chip">Владикавказ</button>
+            </div>
+          </article>
+        </section>
+
+        <nav class="bottom-nav" id="bottom-nav">
+          <button class="nav-btn is-active" data-target="home">🏠<span>Главная</span></button>
+          <button class="nav-btn" data-target="qibla">🧭<span>Кибла</span></button>
+          <button class="nav-btn" data-target="tasbih">✨<span>Тасбих</span></button>
+          <button class="nav-btn" data-target="profile">👤<span>Профиль</span></button>
+        </nav>
       </section>
     </main>
 
